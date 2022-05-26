@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Grocery List</title>
 </head>
 <body>
-    
-
-
+    <div class="grocery">
+        <div class="form-container">
+            <h3>Grocery List</h3>
+            <div class="form-control">
+                <input type="text" class="input-style" id="product-name" name="product-name" placeholder="e.g. Bannanas">
+                <input type="button" class="submit-btn" id="submit-btn" value=" Submit ">
+            </div>
+        </div>
+        <div class="list-container">
+            <article class="list-item">
+                <p class="list-title">Item</p>
+                <div class="grocery-btn-container">
+                    <button type="button" class="edit-btn">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="delete-btn">
+                        <i class="fas fa-thrash"></i>
+                    </button>
+                </div>
+            </article>
+        </div>
+        <button type="button" class="list-clear-btn">Clear Items</button>
+    </div>
 
 
     <script src="/js/grocery.js"></script>

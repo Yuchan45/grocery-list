@@ -2,4 +2,105 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.grocery {
+    width: 600px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.grocery .form-container {
+    text-align: center;
+}
+
+.grocery .form-container > h3 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.05rem;
+}
+
+.form-container .form-control {
+    margin: 15px auto;
+    font-size: 18px;
+    font-weight: 600;
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #f0f5fc;
+}
+
+.form-control .input-style {
+    border: none;
+    color: #798182;
+    height: 38px;
+    width: 250px;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+.form-control .input-style:focus {
+    outline: none !important;
+}
+
+.form-control .submit-btn {
+    font-size: 18px;
+    font-weight: 400;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100px;
+    border: none;
+    background-color: #008fff52;
+    transition: all 0.5s ease;
+}
+
+.form-control .submit-btn:hover {
+    background-color: #008fff9e;
+}
+
+.list-container {
+
+}
+
+.list-container .list-item {
+    
+}
+
+.list-container .list-item .list-title {
+    
+}
+
+.list-item .grocery-btn-container {
+
+}
+
+.grocery-btn-container .edit-btn {
+    
+}
+
+.grocery-btn-container .delete-btn {
+    
+}
+
+.list-clear-btn {
+
 }
