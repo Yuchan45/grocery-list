@@ -5,11 +5,13 @@ const list = document.querySelector('.list-container');
 const submitBtn = document.querySelector('.submit-btn');
 const editBtn = document.querySelector('.edit-btn'); 
 const deleteBtn = document.querySelector('.delete-btn');
+const clearAllBtn = document.querySelector('.list-clear-btn');
 
 const editFlag = false;
 
 submitBtn.addEventListener('click', addItem);
-deleteBtn.addEventListener('click', removeItem());
+//deleteBtn.addEventListener('click', removeItem);
+clearAllBtn.addEventListener('click', clearList);
 
 function addItem() {
     const value = item.value;
@@ -50,6 +52,12 @@ function addItem() {
 function removeItem() {
 
 }
+
+function clearList() {
+    let items = list.querySelectorAll
+    console.log(itemList); 
+}
+
 
 function setBackToDefault() {
     item.value = '';
