@@ -1,6 +1,6 @@
 // ******** SELECT ITEMS ********
 const alert = document.querySelector('.alert');
-const item = document.querySelector('#product-name');
+const input = document.querySelector('#product-name');
 const list = document.querySelector('.list-container');
 const submitBtn = document.querySelector('.submit-btn');
 const editBtn = document.querySelector('.edit-btn'); 
@@ -11,9 +11,10 @@ let editFlag = false;
 
 submitBtn.addEventListener('click', addItem);
 clearAllBtn.addEventListener('click', clearList);
+triggerEnter();
 
 function addItem() {
-    const value = item.value;
+    const value = input.value;
     const id = new Date().getTime().toString(); // Creo un ID casero
 
     if (value && !editFlag) {
@@ -45,14 +46,26 @@ function addItem() {
 
     } else if (value && editFlag) {
         displayAlert("El item ha sido editado!", "valid");
+
+
+
+        
     } else {
         displayAlert("Valor vacio!", "invalid");
     }
 }
 
-function removeItem() {
-    console.log("Hola");
+function removeItem(e) {
+    console.log("Delete");
+    let parent = e.currentTarget.parentElement;
+    let grandParent = parent.parentElement;   
+    let id = grandParent.getAttribute('data-id');
 
+    list.removeChild(grandParent);
+    displayAlert("Item removed!", "invalid");
+    setBackToDefault();
+    //remove from local storage.
+    //removeFromLocalStorage(id);
 }
 
 function clearList() {
@@ -66,13 +79,20 @@ function clearList() {
         // localStorage.removeItem('list');
 
     } else {
-        displayAlert("List Already clear!", "valid");
+        displayAlert("Already clear!", "valid");
     }
 }
 
-function editItem() {
-    console.log("asdas");
-    submitBtn.innerHTML = 'Edit';
+function editItem(e) {
+    console.log("Edit");
+    editFlag = true;
+    submitBtn.value = 'Edit';
+    let grandParent = e.currentTarget.parentElement.parentElement;
+    let id = grandParent.getAttribute('data-id');
+    //Highlight edit text.
+    grandParent.classList.add("edit");
+    input.focus();
+    console.log(id);
 
 
 }
@@ -86,7 +106,7 @@ function setEditDeleteEventListeners(element) {
 }
 
 function setBackToDefault() {
-    item.value = '';
+    input.value = '';
     editFlag = false;
     editId = '';
     submitBtn.innerHTML = "Submit";
@@ -103,3 +123,24 @@ function displayAlert(text, action) {
         alert.classList.remove(`alert-${action}`);
     },1000);
 }
+
+// ***** trigger HTML button when you press Enter *****
+function triggerEnter() {
+    input.addEventListener('keypress', function(e) {
+        if (e.keyCode == 13) {
+            submitBtn.click();
+        }
+    });
+}
+
+// ***** LOCAL STORAGE *****
+function addToLocalStorage(id, value) {
+    console.log("Added to local storage");
+}
+
+function removeFromLocalStorage(id) {
+
+}   console.log("Item removed from local storage")
+
+
+// ***** STEUP ITEMS *****

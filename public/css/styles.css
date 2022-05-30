@@ -44,6 +44,14 @@ body {
     background-color: #0080007a !important;
 }
 
+.edit {
+    background-color: orange !important;
+}
+
+.no-edit {
+    background-color: transparent !important;
+}
+
 .grocery .form-container {
     text-align: center;
 }
