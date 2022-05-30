@@ -75,7 +75,7 @@ body {
 
 .form-control .input-style {
     border: none;
-    color: #798182;
+    color: #282828;;
     height: 38px;
     width: 250px;
     font-size: 18px;
@@ -99,7 +99,8 @@ body {
 }
 
 .form-control .submit-btn:hover {
-    background-color: #008fff9e;
+    background-color: #008fff;
+    color: white;
 }
 
 .list-container {

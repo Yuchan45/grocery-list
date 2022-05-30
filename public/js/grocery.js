@@ -13,6 +13,7 @@ let editElement;
 let editArticle;
 let editID = "";
 
+
 // ***** EVENT LISTENERS *****
 submitBtn.addEventListener('click', addItem);
 clearAllBtn.addEventListener('click', clearList);
@@ -20,7 +21,7 @@ triggerEnter();
 
 // ***** FUNCTIONS *****
 function addItem() {
-    const value = input.value;
+    const value = capitalizeFirstLetter(input.value);
     const id = new Date().getTime().toString(); // Creo un ID casero
 
     if (value && !editFlag) {
@@ -52,7 +53,6 @@ function addItem() {
         //addToLocalStorage(id, value);
         // set back to default
         setBackToDefault();
-
     } else if (value && editFlag) {
         if (value == '') displayAlert("No puedes modificar por un valor vacio!", "invalid");
         editElement.innerHTML = value;
@@ -60,21 +60,18 @@ function addItem() {
         // edit local storage
         // editLocalStorage(editID, value);
         setBackToDefault();
-
-
     } else {
         displayAlert("Valor vacio!", "invalid");
     }
 }
 
 function removeItem(e) {
-    console.log("Delete");
     let parent = e.currentTarget.parentElement;
     let grandParent = parent.parentElement;   
     let id = grandParent.getAttribute('data-id');
-
+    let value = e.currentTarget.parentElement.previousElementSibling.innerHTML;
     list.removeChild(grandParent);
-    displayAlert("Item removed!", "invalid");
+    displayAlert(`"${value}" has been removed!`, "invalid");
     setBackToDefault();
     //remove from local storage.
     //removeFromLocalStorage(id);
@@ -89,7 +86,6 @@ function clearList() {
         displayAlert("Items cleared!", "valid");
         setBackToDefault();
         // localStorage.removeItem('list');
-
     } else {
         displayAlert("Already clear!", "valid");
     }
@@ -130,6 +126,10 @@ function setBackToDefault() {
     submitBtn.innerHTML = "Submit";
 }
 
+// Capitalize First Letter
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // Display alert
 function displayAlert(text, action) {
