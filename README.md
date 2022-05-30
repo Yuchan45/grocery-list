@@ -1,6 +1,6 @@
-## LISTA DE COMPRAS
+# LISTA DE COMPRAS
 
-# Objetivo
+## Objetivo
 
 El objetivo de este proyecto de 'Lista de compras' en Javascript es el de crear un lista que acepta items y los inserta de forma dinamica.
 
