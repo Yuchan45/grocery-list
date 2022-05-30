@@ -15,7 +15,7 @@ Si el usuario solo hace click en el icono de 'Delete', solo ese item sera removi
 Si el usuario hace click en el icono de 'Edit', este podra modificar el nombre del item.
 
 
-## JavaScript usado
+## JavaScript utilizado
 
 - DOM Manipulations
 - functions
