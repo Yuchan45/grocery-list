@@ -10,7 +10,6 @@ const clearAllBtn = document.querySelector('.list-clear-btn');
 let editFlag = false;
 
 submitBtn.addEventListener('click', addItem);
-//deleteBtn.addEventListener('click', removeItem);
 clearAllBtn.addEventListener('click', clearList);
 
 function addItem() {
@@ -39,6 +38,8 @@ function addItem() {
         `;
         // append child (the element we just created).
         list.appendChild(element);
+        // Set edit and delete eventListeners.
+        setEditDeleteEventListeners(element);
         displayAlert("El item ha sido agregado!", "valid");
         setBackToDefault();
 
@@ -50,17 +51,39 @@ function addItem() {
 }
 
 function removeItem() {
+    console.log("Hola");
 
 }
 
 function clearList() {
-    let items = document.querySelectorAll('.list-item');
-    console.log(items); 
-    items.forEach(function(item) {
-        item.remove();
-    });
+    const items = document.querySelectorAll('.list-item');
+    if (items.length > 0) {
+        items.forEach(function(item) {
+            item.remove();
+        });
+        displayAlert("Items cleared!", "valid");
+        setBackToDefault();
+        // localStorage.removeItem('list');
+
+    } else {
+        displayAlert("List Already clear!", "valid");
+    }
 }
 
+function editItem() {
+    console.log("asdas");
+    submitBtn.innerHTML = 'Edit';
+
+
+}
+
+function setEditDeleteEventListeners(element) {
+    // We need to set the event listeners here because we are sure the DOM exists.
+    const editBtn = element.querySelector('.edit-btn');
+    const deleteBtn = element.querySelector('.delete-btn');
+    editBtn.addEventListener('click', editItem);
+    deleteBtn.addEventListener('click', removeItem);
+}
 
 function setBackToDefault() {
     item.value = '';
