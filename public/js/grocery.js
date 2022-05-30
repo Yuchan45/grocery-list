@@ -7,12 +7,18 @@ const editBtn = document.querySelector('.edit-btn');
 const deleteBtn = document.querySelector('.delete-btn');
 const clearAllBtn = document.querySelector('.list-clear-btn');
 
+// Edit options
 let editFlag = false;
+let editElement;
+let editArticle;
+let editID = "";
 
+// ***** EVENT LISTENERS *****
 submitBtn.addEventListener('click', addItem);
 clearAllBtn.addEventListener('click', clearList);
 triggerEnter();
 
+// ***** FUNCTIONS *****
 function addItem() {
     const value = input.value;
     const id = new Date().getTime().toString(); // Creo un ID casero
@@ -42,14 +48,20 @@ function addItem() {
         // Set edit and delete eventListeners.
         setEditDeleteEventListeners(element);
         displayAlert("El item ha sido agregado!", "valid");
+        // add to local storage
+        //addToLocalStorage(id, value);
+        // set back to default
         setBackToDefault();
 
     } else if (value && editFlag) {
+        if (value == '') displayAlert("No puedes modificar por un valor vacio!", "invalid");
+        editElement.innerHTML = value;
         displayAlert("El item ha sido editado!", "valid");
+        // edit local storage
+        // editLocalStorage(editID, value);
+        setBackToDefault();
 
 
-
-        
     } else {
         displayAlert("Valor vacio!", "invalid");
     }
@@ -84,16 +96,21 @@ function clearList() {
 }
 
 function editItem(e) {
-    console.log("Edit");
+    if (editFlag) {
+        setBackToDefault();
+        return;
+    } 
+    // Getting article ID.
+    editArticle = e.currentTarget.parentElement.parentElement;
+    editID = editArticle.getAttribute('data-id');
+    // Setting input edit value.
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+    input.value = editElement.innerHTML;
+    input.focus();
+    //Highlight edit text.
+    editArticle.classList.add("edit");
     editFlag = true;
     submitBtn.value = 'Edit';
-    let grandParent = e.currentTarget.parentElement.parentElement;
-    let id = grandParent.getAttribute('data-id');
-    //Highlight edit text.
-    grandParent.classList.add("edit");
-    input.focus();
-    console.log(id);
-
 
 }
 
@@ -109,6 +126,7 @@ function setBackToDefault() {
     input.value = '';
     editFlag = false;
     editId = '';
+    if (editArticle) editArticle.classList.remove('edit');
     submitBtn.innerHTML = "Submit";
 }
 
@@ -124,7 +142,7 @@ function displayAlert(text, action) {
     },1000);
 }
 
-// ***** trigger HTML button when you press Enter *****
+// trigger HTML button when you press Enter
 function triggerEnter() {
     input.addEventListener('keypress', function(e) {
         if (e.keyCode == 13) {
@@ -133,14 +151,23 @@ function triggerEnter() {
     });
 }
 
+
 // ***** LOCAL STORAGE *****
-function addToLocalStorage(id, value) {
-    console.log("Added to local storage");
-}
+// function addToLocalStorage(id, value) {
+//     console.log("Added to local storage");
+//     const grocery = {
+//         id:id,
+//         value: value
+//     }
+//     let items = localStorage.getItem('');
 
-function removeFromLocalStorage(id) {
 
-}   console.log("Item removed from local storage")
+// }
 
+// function removeFromLocalStorage(id) {
+//     console.log("Item removed from local storage");
+// }   
 
-// ***** STEUP ITEMS *****
+// function editLocalStorage(id, value) {
+
+// }
