@@ -22,7 +22,7 @@ triggerEnter();
 // ***** FUNCTIONS *****
 function addItem() {
     const value = capitalizeFirstLetter(input.value);
-    const id = new Date().getTime().toString(); // Creo un ID casero
+    const id = new Date().getTime().toString(); // Homemade ID using date.
 
     if (value && !editFlag) {
         const element = document.createElement('article');
@@ -48,20 +48,20 @@ function addItem() {
         list.appendChild(element);
         // Set edit and delete eventListeners.
         setEditDeleteEventListeners(element);
-        displayAlert("El item ha sido agregado!", "valid");
+        displayAlert("Item added successfully", "valid");
         // add to local storage
-        //addToLocalStorage(id, value);
+        // addToLocalStorage(id, value);
         // set back to default
         setBackToDefault();
     } else if (value && editFlag) {
-        if (value == '') displayAlert("No puedes modificar por un valor vacio!", "invalid");
+        if (value == '') displayAlert("You can't modify an empty value!", "invalid");
         editElement.innerHTML = value;
-        displayAlert("El item ha sido editado!", "valid");
+        displayAlert("Item edited successfully!", "valid");
         // edit local storage
         // editLocalStorage(editID, value);
         setBackToDefault();
     } else {
-        displayAlert("Valor vacio!", "invalid");
+        displayAlert("Empty value!", "invalid");
     }
 }
 
