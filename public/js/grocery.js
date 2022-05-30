@@ -7,7 +7,7 @@ const editBtn = document.querySelector('.edit-btn');
 const deleteBtn = document.querySelector('.delete-btn');
 const clearAllBtn = document.querySelector('.list-clear-btn');
 
-const editFlag = false;
+let editFlag = false;
 
 submitBtn.addEventListener('click', addItem);
 //deleteBtn.addEventListener('click', removeItem);
@@ -54,8 +54,11 @@ function removeItem() {
 }
 
 function clearList() {
-    let items = list.querySelectorAll
-    console.log(itemList); 
+    let items = document.querySelectorAll('.list-item');
+    console.log(items); 
+    items.forEach(function(item) {
+        item.remove();
+    });
 }
 
 
