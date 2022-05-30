@@ -13,3 +13,13 @@ Si el usuario hace click en 'Clear items', todos los items de la lista seran rem
 Si el usuario solo hace click en el icono de 'Delete', solo ese item sera removido.
 
 Si el usuario hace click en el icono de 'Edit', este podra modificar el nombre del item.
+
+
+## JavaScript usado
+
+- DOM Manipulations
+- functions
+- eventListeners
+- forEach loops
+- CSS manipulation
+- Conditionals
