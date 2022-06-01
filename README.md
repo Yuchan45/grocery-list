@@ -23,3 +23,10 @@ Si el usuario hace click en el icono de 'Edit', este podra modificar el nombre d
 - forEach loops
 - CSS manipulation
 - Conditionals
+
+## Ejecucion
+
+1. Clonar repositorio
+2. Ejecutar el comando 'npm install'
+3. Ejecutar el comando 'npm start'
+4. Abrir el link: localhost:3000
